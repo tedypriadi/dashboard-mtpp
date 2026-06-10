@@ -172,3 +172,39 @@ h1{
 #perdaChart{
     max-height:150px;
 }
+
+/* =========================
+   TABEL MONITORING
+========================= */
+
+#table-container{
+    margin-top:20px;
+    background:#2b2f38;
+    padding:20px;
+    border-radius:12px;
+}
+
+#table-container h3{
+    margin-top:0;
+}
+
+#provinsi-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+#provinsi-table th{
+    background:#1f232b;
+    padding:12px;
+    text-align:left;
+}
+
+#provinsi-table td{
+    padding:10px;
+    border-top:1px solid #444;
+    vertical-align:top;
+}
+
+#provinsi-table tr:hover{
+    background:#353b48;
+}
