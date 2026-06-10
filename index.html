@@ -52,28 +52,40 @@
 
     <!-- Peta -->
     <div id="map"></div>
-<div id="legend">
+<div id="bottom-panel">
 
-    <h3>Legenda</h3>
+    <div id="legend">
 
-    <div class="legend-row">
-        <span class="legend-box legend-green"></span>
-        Terintegrasi
+        <h3>Legenda Status Integrasi</h3>
+
+        <div class="legend-row">
+            <span class="legend-box legend-green"></span>
+            Terintegrasi
+        </div>
+
+        <div class="legend-row">
+            <span class="legend-box legend-yellow"></span>
+            Proses Integrasi
+        </div>
+
+        <div class="legend-row">
+            <span class="legend-box legend-orange"></span>
+            Penyusunan Materi Teknis
+        </div>
+
+        <div class="legend-row">
+            <span class="legend-box legend-grey"></span>
+            Tidak Memiliki Wilayah Laut
+        </div>
+
     </div>
 
-    <div class="legend-row">
-        <span class="legend-box legend-yellow"></span>
-        Proses Integrasi
-    </div>
+    <div id="chart-container">
 
-    <div class="legend-row">
-        <span class="legend-box legend-orange"></span>
-        Penyusunan Materi Teknis
-    </div>
+        <h3>Penetapan Perda RTRW Terintegrasi</h3>
 
-    <div class="legend-row">
-        <span class="legend-box legend-grey"></span>
-        Tidak Memiliki Wilayah Laut
+        <canvas id="perdaChart"></canvas>
+
     </div>
 
 </div>
