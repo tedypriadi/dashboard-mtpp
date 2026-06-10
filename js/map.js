@@ -49,8 +49,12 @@ fetch('data/status.json')
 
           onEachFeature: function(feature, layer) {
 
-            let provinsi = feature.properties.WADMPR;
-            let status = statusData[provinsi] || "Belum ada data";
+            let status = statusData[provinsi];
+
+console.log(
+  "Provinsi:", provinsi,
+  "Status:", status
+);
 
             layer.bindPopup(
   "<b>" + provinsi + "</b><br>" +
