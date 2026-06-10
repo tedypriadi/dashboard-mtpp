@@ -32,3 +32,8 @@ h1{
     height:600px;
     border-radius:10px;
 }
+
+#map{
+    height: 700px;
+    width: 100%;
+}
