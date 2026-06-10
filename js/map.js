@@ -1,5 +1,3 @@
-// Membuat peta Indonesia
-
 var map = L.map('map').setView([-2.5,118],5);
 
 L.tileLayer(
@@ -9,19 +7,53 @@ L.tileLayer(
 }
 ).addTo(map);
 
-// Membaca GeoJSON
+// Membaca status
 
-fetch('data/provinsi.geojson')
+fetch('data/status.json')
 .then(response => response.json())
-.then(data => {
+.then(statusData => {
 
-    L.geoJSON(data,{
-        style:{
-            color:'#ffffff',
-            weight:1,
-            fillColor:'#009688',
-            fillOpacity:0.8
+    fetch('data/provinsi.geojson')
+    .then(response => response.json())
+    .then(geojsonData => {
+
+        function getColor(status){
+
+            if(status === "Terintegrasi")
+                return "#00B894";
+
+            if(status === "Proses Integrasi")
+                return "#FDCB6E";
+
+            if(status === "Penyusunan Materi Teknis")
+                return "#E17055";
+
+            if(status === "Tidak Memiliki Wilayah Laut")
+                return "#636E72";
+
+            return "#CCCCCC";
         }
-    }).addTo(map);
+
+        L.geoJSON(geojsonData,{
+
+            style:function(feature){
+
+                let provinsi =
+                    feature.properties.WADMPR;
+
+                let status =
+                    statusData[provinsi];
+
+                return{
+                    color:"#FFFFFF",
+                    weight:1,
+                    fillColor:getColor(status),
+                    fillOpacity:0.8
+                };
+            }
+
+        }).addTo(map);
+
+    });
 
 });
