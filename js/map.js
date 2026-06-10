@@ -17,7 +17,7 @@ fetch('data/status.json')
 
         function getColor(status) {
 
-          if (status === "Terintegrasi")
+          if (status === "Integrasi")
             return "#00B894";
 
           if (status === "Proses Integrasi")
