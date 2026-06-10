@@ -36,21 +36,31 @@ fetch('data/status.json')
 
         L.geoJSON(geojsonData,{
 
-            style:function(feature){
+    style:function(feature){
 
-                let provinsi =
-                    feature.properties.WADMPR;
+        let provinsi =
+            feature.properties.WADMPR;
 
-                let status =
-                    statusData[provinsi];
+        let status =
+            statusData[provinsi];
 
-                return{
-                    color:"#FFFFFF",
-                    weight:1,
-                    fillColor:getColor(status),
-                    fillOpacity:0.8
-                };
-            }
+        return{
+            color:"#FFFFFF",
+            weight:1,
+            fillColor:getColor(status),
+            fillOpacity:0.8
+        };
+    },
+
+    onEachFeature:function(feature, layer){
+
+        layer.bindPopup(
+            feature.properties.WADMPR
+        );
+
+    }
+
+}).addTo(map);
 
         }).addTo(map);
 
