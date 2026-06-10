@@ -15,24 +15,22 @@ fetch('data/status.json')
       .then(response => response.json())
       .then(geojsonData => {
 
-        function getColor(status){
+        function getColor(status) {
 
-    status = String(status).trim();
+          if (status === "Terintegrasi")
+            return "#00B894";
 
-    if(status === "Integrasi")
-        return "#00B894";
+          if (status === "Proses Integrasi")
+            return "#FDCB6E";
 
-    if(status === "Proses Integrasi")
-        return "#FDCB6E";
+          if (status === "Penyusunan Materi Teknis")
+            return "#E17055";
 
-    if(status === "Penyusunan Materi Teknis")
-        return "#E17055";
+          if (status === "Tidak Memiliki Wilayah Laut")
+            return "#636E72";
 
-    if(status === "Tidak Memiliki Wilayah Laut")
-        return "#636E72";
-
-    return "#CCCCCC";
-}
+          return "#CCCCCC";
+        }
 
         L.geoJSON(geojsonData, {
 
