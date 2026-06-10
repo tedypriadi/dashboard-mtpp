@@ -103,3 +103,43 @@ h1{
 .nonlaut{
     background:#636E72;
 }
+#legend{
+    margin-top:20px;
+    background:#2b2f38;
+    padding:20px;
+    border-radius:12px;
+}
+
+#legend h3{
+    margin-top:0;
+    margin-bottom:15px;
+}
+
+.legend-row{
+    display:flex;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.legend-box{
+    width:20px;
+    height:20px;
+    margin-right:10px;
+    border-radius:4px;
+}
+
+.legend-green{
+    background:#00B894;
+}
+
+.legend-yellow{
+    background:#FDCB6E;
+}
+
+.legend-orange{
+    background:#E17055;
+}
+
+.legend-grey{
+    background:#636E72;
+}
