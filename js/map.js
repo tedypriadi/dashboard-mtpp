@@ -7,8 +7,6 @@ L.tileLayer(
 }
 ).addTo(map);
 
-// Membaca status
-
 fetch('data/status.json')
 .then(response => response.json())
 .then(statusData => {
@@ -34,33 +32,37 @@ fetch('data/status.json')
             return "#CCCCCC";
         }
 
-        L.geoJSON(geojsonData,{
+        L.geoJSON(geojsonData, {
 
-    style:function(feature){
+            style: function(feature){
 
-        let provinsi =
-            feature.properties.WADMPR;
+                let provinsi =
+                    feature.properties.WADMPR;
 
-        let status =
-            statusData[provinsi];
+                let status =
+                    statusData[provinsi];
 
-        return{
-            color:"#FFFFFF",
-            weight:1,
-            fillColor:getColor(status),
-            fillOpacity:0.8
-        };
-    },
+                return {
+                    color:"#FFFFFF",
+                    weight:1,
+                    fillColor:getColor(status),
+                    fillOpacity:0.8
+                };
+            },
 
-    onEachFeature:function(feature, layer){
+            onEachFeature: function(feature, layer){
 
-        layer.bindPopup(
-            feature.properties.WADMPR
-        );
+                let provinsi =
+                    feature.properties.WADMPR;
 
-    }
+                let status =
+                    statusData[provinsi] || "Belum ada data";
 
-}).addTo(map);
+                layer.bindPopup(
+                    "<b>" + provinsi + "</b><br>" +
+                    "Status: " + status
+                );
+            }
 
         }).addTo(map);
 
