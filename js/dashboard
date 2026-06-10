@@ -1,0 +1,38 @@
+fetch('data/status.json')
+.then(response => response.json())
+.then(data => {
+
+    let terintegrasi = 0;
+    let proses = 0;
+    let mtpp = 0;
+    let nonlaut = 0;
+
+    Object.values(data).forEach(status => {
+
+        if(status === "Terintegrasi")
+            terintegrasi++;
+
+        if(status === "Proses Integrasi")
+            proses++;
+
+        if(status === "Penyusunan Materi Teknis")
+            mtpp++;
+
+        if(status === "Tidak Memiliki Wilayah Laut")
+            nonlaut++;
+
+    });
+
+    document.getElementById('terintegrasi').innerText =
+        terintegrasi;
+
+    document.getElementById('proses').innerText =
+        proses;
+
+    document.getElementById('mtpp').innerText =
+        mtpp;
+
+    document.getElementById('nonlaut').innerText =
+        nonlaut;
+
+});
