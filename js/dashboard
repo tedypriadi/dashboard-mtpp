@@ -7,32 +7,35 @@ fetch('data/status.json')
     let mtpp = 0;
     let nonlaut = 0;
 
-    Object.values(data).forEach(status => {
+    for (const provinsi in data) {
 
-        if(status === "Terintegrasi")
+        const status = data[provinsi];
+
+        if (status === "Terintegrasi") {
             terintegrasi++;
-
-        if(status === "Proses Integrasi")
+        }
+        else if (status === "Proses Integrasi") {
             proses++;
-
-        if(status === "Penyusunan Materi Teknis")
+        }
+        else if (status === "Penyusunan Materi Teknis") {
             mtpp++;
-
-        if(status === "Tidak Memiliki Wilayah Laut")
+        }
+        else if (status === "Tidak Memiliki Wilayah Laut") {
             nonlaut++;
+        }
+    }
 
-    });
+    console.log("Terintegrasi:", terintegrasi);
+    console.log("Proses:", proses);
+    console.log("MTPP:", mtpp);
+    console.log("Non Laut:", nonlaut);
 
-    document.getElementById('terintegrasi').innerText =
-        terintegrasi;
+    document.getElementById("terintegrasi").textContent = terintegrasi;
+    document.getElementById("proses").textContent = proses;
+    document.getElementById("mtpp").textContent = mtpp;
+    document.getElementById("nonlaut").textContent = nonlaut;
 
-    document.getElementById('proses').innerText =
-        proses;
-
-    document.getElementById('mtpp').innerText =
-        mtpp;
-
-    document.getElementById('nonlaut').innerText =
-        nonlaut;
-
+})
+.catch(error => {
+    console.error("Error dashboard:", error);
 });
