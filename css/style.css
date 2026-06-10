@@ -208,3 +208,27 @@ h1{
 #provinsi-table tr:hover{
     background:#353b48;
 }
+
+.col-no{
+    width:5%;
+}
+
+.col-prov{
+    width:15%;
+}
+
+.col-status{
+    width:15%;
+}
+
+.col-perda{
+    width:15%;
+}
+
+.col-rzwp3k{
+    width:15%;
+}
+
+.col-riwayat{
+    width:35%;
+}
