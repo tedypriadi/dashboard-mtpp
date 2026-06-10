@@ -53,8 +53,9 @@ fetch('data/status.json')
             let status = statusData[provinsi] || "Belum ada data";
 
             layer.bindPopup(
-              "<b>" + provinsi + "</b><br>Status: " + status
-            );
+  "<b>" + provinsi + "</b><br>" +
+  "Status JSON: " + status
+);
 
           }
 
