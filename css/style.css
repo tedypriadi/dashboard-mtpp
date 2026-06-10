@@ -143,3 +143,20 @@ h1{
 .legend-grey{
     background:#636E72;
 }
+
+#bottom-panel{
+    display:flex;
+    gap:20px;
+    margin-top:20px;
+}
+
+#legend{
+    width:35%;
+}
+
+#chart-container{
+    width:65%;
+    background:#2b2f38;
+    padding:20px;
+    border-radius:12px;
+}
