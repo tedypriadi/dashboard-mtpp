@@ -50,7 +50,7 @@ fetch('data/status.json')
     .then(response => response.json())
     .then(geojsonData => {
 
-        L.geoJSON(geojsonData, {
+        var geoLayer = L.geoJSON(geojsonData, {
 
             style: function(feature) {
 
@@ -83,6 +83,8 @@ fetch('data/status.json')
             }
 
         }).addTo(map);
+
+map.fitBounds(geoLayer.getBounds());
 
     })
     .catch(error => {
