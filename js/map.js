@@ -1,70 +1,95 @@
+// =========================
+// INISIALISASI PETA
+// =========================
+
 var map = L.map('map').setView([-2.5, 118], 5);
 
 L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-  {
-    attribution: ''
-  }
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    {
+        attribution: '&copy; OpenStreetMap'
+    }
 ).addTo(map);
 
-fetch('data/status.json')
-  .then(response => response.json())
-  .then(statusData => {
 
-    fetch('data/provinsi.geojson')
-      .then(response => response.json())
-      .then(geojsonData => {
+// =========================
+// FUNGSI WARNA STATUS
+// =========================
 
-        function getColor(status) {
+function getColor(status) {
 
-          if (status === "Terintegrasi")
+    switch(status) {
+
+        case "Terintegrasi":
             return "#00B894";
 
-          if (status === "Proses Integrasi")
+        case "Proses Integrasi":
             return "#FDCB6E";
 
-          if (status === "Penyusunan Materi Teknis")
+        case "Penyusunan Materi Teknis":
             return "#E17055";
 
-          if (status === "Tidak Memiliki Wilayah Laut")
+        case "Tidak Memiliki Wilayah Laut":
             return "#636E72";
 
-          return "#CCCCCC";
-        }
+        default:
+            return "#CCCCCC";
+    }
+}
+
+
+// =========================
+// LOAD STATUS DAN GEOJSON
+// =========================
+
+fetch('data/status.json')
+.then(response => response.json())
+.then(statusData => {
+
+    fetch('data/provinsi.geojson')
+    .then(response => response.json())
+    .then(geojsonData => {
 
         L.geoJSON(geojsonData, {
 
-          style: function(feature) {
+            style: function(feature) {
 
-            let provinsi = feature.properties.WADMPR;
-            let status = statusData[provinsi];
+                let provinsi = feature.properties.WADMPR;
 
-            return {
-              color: "#FFFFFF",
-              weight: 1,
-              fillColor: getColor(status),
-              fillOpacity: 0.8
-            };
-          },
+                let status = statusData[provinsi];
 
-          onEachFeature: function(feature, layer) {
+                return {
+                    color: "#FFFFFF",
+                    weight: 1,
+                    fillColor: getColor(status),
+                    fillOpacity: 0.8
+                };
+            },
 
-            let status = statusData[provinsi];
+            onEachFeature: function(feature, layer) {
 
-console.log(
-  "Provinsi:", provinsi,
-  "Status:", status
-);
+                let provinsi = feature.properties.WADMPR;
 
-            layer.bindPopup(
-  "<b>" + provinsi + "</b><br>" +
-  "Status JSON: " + status
-);
+                let status =
+                    statusData[provinsi] ||
+                    "Belum ada data";
 
-          }
+                layer.bindPopup(`
+                    <b>${provinsi}</b>
+                    <hr>
+                    Status: ${status}
+                `);
+
+            }
 
         }).addTo(map);
 
-      });
+    })
+    .catch(error => {
+        console.error("Error membaca GeoJSON:", error);
+    });
 
-  });
+})
+.catch(error => {
+    console.error("Error membaca status.json:", error);
+});
