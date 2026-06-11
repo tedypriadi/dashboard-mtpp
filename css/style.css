@@ -321,3 +321,9 @@ h1{
     margin:0;
     color:#00A4EF;
 }
+
+.footer-logo{
+    height:45px;
+    width:auto;
+    object-fit:contain;
+}
