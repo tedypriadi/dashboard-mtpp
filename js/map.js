@@ -4,7 +4,7 @@
 
 var map = L.map('map', {
     scrollWheelZoom: false
-}).setView([-2.5,118],5);
+}).setView([-2.5,118],4);
 
 L.tileLayer(
     'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
@@ -86,7 +86,7 @@ fetch('data/status.json')
 
         }).addTo(map);
 
-map.fitBounds(geoLayer.getBounds());
+map.setView([-2.5,118],6);
 
     })
     .catch(error => {
