@@ -1,3 +1,45 @@
+Chart.register({
+
+    id: 'valueLabels',
+
+    afterDatasetsDraw(chart) {
+
+        const {ctx} = chart;
+
+        chart.data.datasets.forEach((dataset, i) => {
+
+            const meta =
+                chart.getDatasetMeta(i);
+
+            meta.data.forEach((bar, index) => {
+
+                const value =
+                    dataset.data[index];
+
+                ctx.save();
+
+                ctx.fillStyle = 'white';
+
+                ctx.font =
+                    'bold 14px Arial';
+
+                ctx.textAlign = 'center';
+
+                ctx.fillText(
+                    value,
+                    bar.x,
+                    bar.y - 10
+                );
+
+                ctx.restore();
+
+            });
+
+        });
+
+    }
+
+});
 const ctx = document.getElementById('perdaChart');
 
 new Chart(ctx, {
