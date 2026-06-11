@@ -1,0 +1,19 @@
+[
+  {
+    "provinsi": "Aceh",
+    "statusIntegrasi": "Proses Integrasi",
+    "nomorPerda": "-",
+    "linkPerda": "",
+    "statusRZWP3K": "Perda",
+    "riwayat": "Dalam proses integrasi RTRW dan MTPP."
+  },
+
+  {
+    "provinsi": "Bali",
+    "statusIntegrasi": "Terintegrasi",
+    "nomorPerda": "Perda No. 2 Tahun 2023",
+    "linkPerda": "",
+    "statusRZWP3K": "-",
+    "riwayat": "Perda RTRW telah mengintegrasikan muatan ruang laut."
+  }
+]
