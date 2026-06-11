@@ -327,3 +327,9 @@ h1{
     width:auto;
     object-fit:contain;
 }
+
+.footer-logo-wide{
+    height:60px;
+    width:auto;
+    object-fit:contain;
+}
