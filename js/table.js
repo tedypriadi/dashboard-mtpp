@@ -23,7 +23,7 @@ fetch('data/provinsi.json')
                     item.linkPerda
                     ?
                     `<a href="${item.linkPerda}" target="_blank">
-                        ${item.nomorPerda}
+                    📄 ${item.nomorPerda}
                     </a>`
                     :
                     item.nomorPerda
