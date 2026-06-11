@@ -23,9 +23,8 @@ new Chart(ctx, {
             },
 
             title: {
-                display: true,
-                text: 'Penetapan Perda RTRW Terintegrasi',
-                color: 'white'
+                display: false,
+               
             }
 
         },
