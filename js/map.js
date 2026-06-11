@@ -81,7 +81,14 @@ fetch('data/status.json')
                     <hr>
                     Status: ${status}
                 `);
-
+layer.bindTooltip(
+    provinsi,
+    {
+        permanent:false,
+        direction:'center',
+        className:'province-label'
+    }
+);
             }
 
         }).addTo(map);
