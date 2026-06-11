@@ -219,3 +219,32 @@ h1{
     font-size:12px;
     padding:4px 8px;
 }
+
+/* =========================
+   PAGINATION
+========================= */
+
+#pagination{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+}
+
+#pagination button{
+    background:#00A4EF;
+    color:white;
+    border:none;
+    padding:8px 16px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+#pagination button:hover{
+    background:#33BBFF;
+}
+
+#pageInfo{
+    font-weight:bold;
+}
