@@ -4,7 +4,7 @@
 
 var map = L.map('map', {
     scrollWheelZoom: false
-}).setView([-2.5,118],4);
+}).setView([-2.5,118],5);
 
 L.tileLayer(
     'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
