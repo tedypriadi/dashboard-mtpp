@@ -7,6 +7,7 @@ body{
 
 h1{
     text-align:center;
+    margin-bottom:20px;
 }
 
 /* ======================
@@ -22,6 +23,7 @@ h1{
 #map{
     width:75%;
     height:650px;
+    border-radius:12px;
 }
 
 #summary{
@@ -49,55 +51,26 @@ h1{
 
 .card p{
     margin-top:10px;
+    margin-bottom:0;
 }
 
-#legend{
-    background:#2b2f38;
-    padding:15px;
-    border-radius:10px;
-    margin-bottom:15px;
-    width:350px;
-}
+/* ======================
+   LEGENDA + GRAFIK
+====================== */
 
-.legend-title{
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.legend-item{
+#bottom-panel{
     display:flex;
-    align-items:center;
-    margin-bottom:8px;
-}
-
-.legend-color{
-    width:18px;
-    height:18px;
-    display:inline-block;
-    margin-right:10px;
-    border-radius:4px;
-}
-
-.terintegrasi{
-    background:#00B894;
-}
-
-.proses{
-    background:#FDCB6E;
-}
-
-.mtpp{
-    background:#E17055;
-}
-
-.nonlaut{
-    background:#636E72;
-}
-#legend{
+    gap:20px;
     margin-top:20px;
+    align-items:stretch;
+}
+
+#legend{
+    width:20%;
     background:#2b2f38;
     padding:20px;
     border-radius:12px;
+    box-sizing:border-box;
 }
 
 #legend h3{
@@ -108,12 +81,12 @@ h1{
 .legend-row{
     display:flex;
     align-items:center;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .legend-box{
-    width:20px;
-    height:20px;
+    width:18px;
+    height:18px;
     margin-right:10px;
     border-radius:4px;
 }
@@ -134,30 +107,16 @@ h1{
     background:#636E72;
 }
 
-#bottom-panel{
-    display:flex;
-    gap:20px;
-    margin-top:20px;
-    align-items:stretch;
-    width:100%;
-}
-
-#legend{
-    width:20%;
-    background:#2b2f38;
-    padding:20px;
-    border-radius:12px;
-    min-height:220px;
-    box-sizing:border-box;
-}
-
 #chart-container{
     width:80%;
     background:#2b2f38;
     padding:20px;
     border-radius:12px;
-    min-height:220px;
     box-sizing:border-box;
+}
+
+#chart-container h3{
+    margin-top:0;
 }
 
 #perdaChart{
@@ -169,7 +128,6 @@ h1{
 ========================= */
 
 #table-container{
-    clear:both;
     width:100%;
     margin-top:20px;
     background:#2b2f38;
@@ -203,6 +161,8 @@ h1{
     background:#353b48;
 }
 
+/* Lebar Kolom */
+
 .col-no{
     width:5%;
 }
@@ -226,6 +186,29 @@ h1{
 .col-riwayat{
     width:35%;
 }
+
+/* =========================
+   LINK PERDA
+========================= */
+
+#provinsi-table a{
+    color:#00A4EF;
+    text-decoration:none;
+    font-weight:600;
+}
+
+#provinsi-table a:hover{
+    color:#33BBFF;
+    text-decoration:underline;
+}
+
+#provinsi-table a:visited{
+    color:#00A4EF;
+}
+
+/* =========================
+   LABEL PROVINSI
+========================= */
 
 .province-label{
     background:rgba(0,0,0,0.8);
