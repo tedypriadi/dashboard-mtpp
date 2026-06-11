@@ -291,16 +291,6 @@ h1{
     margin-bottom:30px;
 }
 
-#footer-logo-row-1,
-#footer-logo-row-2{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:30px;
-    margin-bottom:20px;
-    flex-wrap:wrap;
-}
-
 #footer-text{
     text-align:center;
     margin-top:20px;
@@ -320,16 +310,4 @@ h1{
 #footer-text h3{
     margin:0;
     color:#00A4EF;
-}
-
-.footer-logo{
-    height:45px;
-    width:auto;
-    object-fit:contain;
-}
-
-.footer-logo-wide{
-    height:60px;
-    width:auto;
-    object-fit:contain;
 }
