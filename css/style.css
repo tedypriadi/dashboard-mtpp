@@ -274,3 +274,50 @@ h1{
 #pageInfo{
     font-weight:bold;
 }
+
+/* =========================
+   FOOTER
+========================= */
+
+#footer{
+    margin-top:50px;
+    padding-top:20px;
+    padding-bottom:30px;
+}
+
+#footer-divider{
+    height:1px;
+    background:#3d4350;
+    margin-bottom:30px;
+}
+
+#footer-logo-row-1,
+#footer-logo-row-2{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+#footer-text{
+    text-align:center;
+    margin-top:20px;
+}
+
+#footer-text p{
+    margin:5px 0;
+    font-size:15px;
+    letter-spacing:0.5px;
+}
+
+#footer-text h2{
+    margin:10px 0 5px;
+    font-size:22px;
+}
+
+#footer-text h3{
+    margin:0;
+    color:#00A4EF;
+}
