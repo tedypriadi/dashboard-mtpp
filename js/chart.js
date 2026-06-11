@@ -85,9 +85,9 @@ new Chart(ctx, {
 
             },
 
-            y: {
-
-                beginAtZero: true,
+           y: {
+               beginAtZero: true,
+               suggestedMax: 12,
 
                 ticks: {
                     color: 'white'
