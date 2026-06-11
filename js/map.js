@@ -86,7 +86,7 @@ fetch('data/status.json')
 
         }).addTo(map);
 
-map.setView([-2.5,118],6);
+map.setView([-2.5,118],5);
 
     })
     .catch(error => {
