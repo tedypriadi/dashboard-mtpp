@@ -9,23 +9,24 @@ body{
    HEADER
 ========================= */
 
+/* =========================
+   HEADER
+========================= */
+
 #header{
-    position:relative;
-    text-align:center;
     margin-bottom:25px;
-    padding-top:10px;
 }
 
 #logo-kkp{
-    position:absolute;
-    top:10px;
-    left:10px;
-
+    display:block;
     height:90px;
     width:auto;
+    margin-left:10px;
+    margin-bottom:20px;
 }
 
 #header h1{
+    text-align:center;
     margin:0;
     font-size:32px;
     line-height:1.3;
