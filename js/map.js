@@ -4,14 +4,36 @@
 
 var map = L.map('map', {
     scrollWheelZoom: false
-}).setView([-2.5,118],4);
+}).setView([-2.5, 118], 5);
 
-L.tileLayer(
-    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+
+// =========================
+// BASEMAPS
+// =========================
+
+var lightGray = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
     {
-        attribution: '&copy; OpenStreetMap'
+        attribution: 'Esri'
     }
-).addTo(map);
+);
+
+var satellite = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    {
+        attribution: 'Esri'
+    }
+);
+
+var ocean = L.tileLayer(
+    'https://services.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}',
+    {
+        attribution: 'Esri'
+    }
+);
+
+// Basemap default
+lightGray.addTo(map);
 
 
 // =========================
@@ -20,7 +42,7 @@ L.tileLayer(
 
 function getColor(status) {
 
-    switch(status) {
+    switch (status) {
 
         case "Terintegrasi":
             return "#00B894";
@@ -81,19 +103,44 @@ fetch('data/status.json')
                     <hr>
                     Status: ${status}
                 `);
-layer.bindTooltip(
-    provinsi,
-    {
-        permanent:false,
-        direction:'center',
-        className:'province-label'
-    }
-);
+
+                layer.bindTooltip(
+                    provinsi,
+                    {
+                        permanent: false,
+                        direction: 'center',
+                        className: 'province-label'
+                    }
+                );
+
             }
 
         }).addTo(map);
 
-map.setView([-2.5,118],5);
+        // Zoom awal Indonesia
+        map.setView([-2.5, 118], 5);
+
+        // =========================
+        // BASEMAP SWITCHER
+        // =========================
+
+        var baseMaps = {
+            "Light Gray": lightGray,
+            "Satellite": satellite,
+            "Ocean": ocean
+        };
+
+        var overlayMaps = {
+            "Status Integrasi Provinsi": geoLayer
+        };
+
+        L.control.layers(
+            baseMaps,
+            overlayMaps,
+            {
+                collapsed: false
+            }
+        ).addTo(map);
 
     })
     .catch(error => {
