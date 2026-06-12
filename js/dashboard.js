@@ -1,4 +1,3 @@
-alert("dashboard.js loaded");
 fetch('data/status.json')
 .then(response => response.json())
 .then(data => {
