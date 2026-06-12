@@ -33,7 +33,7 @@ var ocean = L.tileLayer(
 );
 
 // Basemap default
-lightGray.addTo(map);
+satellite.addTo(map);
 
 
 // =========================
