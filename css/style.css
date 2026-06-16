@@ -86,12 +86,49 @@ h1{
    KPI ICON
 ====================== */
 
-.kpi-icon{
-    font-size:70px;
-    margin-bottom:15px;
+/* ======================
+   KPI
+====================== */
+
+.card{
+    flex:1;
+    background:#2b2f38;
+    border-radius:12px;
+    padding:20px;
 }
 
-/* Warna sesuai status */
+.kpi-content{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    height:100%;
+}
+
+.kpi-icon{
+    font-size:60px;
+    flex-shrink:0;
+}
+
+.kpi-text{
+    text-align:left;
+}
+
+.kpi-text h2{
+    margin:0;
+    font-size:52px;
+    font-weight:700;
+    line-height:1;
+}
+
+.kpi-text p{
+    margin-top:8px;
+    margin-bottom:0;
+    font-size:15px;
+    line-height:1.3;
+    font-weight:600;
+}
+
+/* Warna ikon */
 
 .icon-terintegrasi{
     color:#00B894;
@@ -107,28 +144,6 @@ h1{
 
 .icon-nonlaut{
     color:#636E72;
-}
-
-.card h2{
-    font-size:48px;
-    margin:0;
-}
-
-.card p{
-    margin-top:10px;
-    line-height:1.3;
-    font-weight:600;
-}
-
-.card h2{
-    font-size:48px;
-    margin:0;
-}
-
-.card p{
-    margin-top:10px;
-    line-height:1.3;
-    font-weight:600;
 }
 
 /* ======================
