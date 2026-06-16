@@ -80,7 +80,18 @@ function renderTable(data){
                 }
             </td>
 
-            <td>${item.statusRZWP3K}</td>
+            <td>
+                ${
+                    item.linkRZWP3K
+                    ?
+                    `<a href="${item.linkRZWP3K}" target="_blank">
+                    ${item.statusRZWP3K}
+                    </a>`
+                    :
+                    item.statusRZWP3K
+                }
+
+            </td>
 
             <td>${item.riwayat}</td>
 
