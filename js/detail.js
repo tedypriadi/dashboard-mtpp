@@ -27,7 +27,43 @@ fetch(`data/provinsi/${slug}.json`)
 
     // Profil
     document.getElementById("profil").innerHTML = `
-        <h3>Profil Wilayah</h3>
+        <div class="profile-title">
+Profil Wilayah
+</div>
+
+<table>
+
+<tr>
+<td>Status</td>
+<td>:</td>
+<td>${data.status}</td>
+</tr>
+
+<tr>
+<td>Luas Laut</td>
+<td>:</td>
+<td>${data.luas_laut}</td>
+</tr>
+
+<tr>
+<td>Kabupaten Pesisir</td>
+<td>:</td>
+<td>${data.kabupaten_pesisir}</td>
+</tr>
+
+<tr>
+<td>Jumlah Pulau</td>
+<td>:</td>
+<td>${data.pulau}</td>
+</tr>
+
+</table>
+
+<div class="profile-description">
+
+Jawa Timur merupakan salah satu provinsi strategis di Indonesia yang memiliki wilayah pesisir dan laut yang luas, dengan potensi perikanan, pelabuhan, konservasi, dan pariwisata bahari yang menjadi pilar utama pembangunan wilayah pesisir.
+
+</div>
 
         <table>
             <tr>
