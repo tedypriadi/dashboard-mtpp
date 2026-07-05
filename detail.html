@@ -31,19 +31,72 @@ height:500px;
 border-radius:10px;
 }
 
+.top-container{
+    display:flex;
+    gap:30px;
+    align-items:flex-start;
+}
+
+.map-panel{
+    width:50%;
+}
+
+.profile-panel{
+    width:50%;
+}
+
+#map{
+    height:700px;
+    border-radius:10px;
+}
+
+#judul{
+    font-size:48px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.profile-panel table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:22px;
+}
+
+.profile-panel td{
+    padding:6px;
+}
+
+.profile-title{
+    font-size:34px;
+    margin-bottom:20px;
+}
+
+.profile-description{
+    margin-top:40px;
+    line-height:1.8;
+    font-size:22px;
+    text-align:justify;
+}
+  
 </style>
 
 </head>
 
 <body>
 
-<h1 id="judul">Loading...</h1>
+<h1 id="judul"></h1>
 
-<div class="card" id="profil">
-Loading data...
+<div class="top-container">
+
+    <div class="map-panel">
+        <div id="map"></div>
+    </div>
+
+    <div class="profile-panel">
+        <div id="profil"></div>
+    </div>
+
 </div>
-
-<div id="map"></div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="js/detail.js"></script>
