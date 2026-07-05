@@ -24,6 +24,38 @@ data.provinsi;
 document.getElementById("profil")
 .innerHTML = `
 
+fetch('data/provinsi.geojson')
+.then(response => response.json())
+.then(geojson => {
+
+    const provLayer = L.geoJSON(
+        geojson,
+        {
+            filter: function(feature){
+
+                return (
+                    feature.properties.WADMPR ===
+                    data.provinsi
+                );
+
+            },
+
+            style: {
+                color: '#00B894',
+                weight: 3,
+                fillColor: '#00B894',
+                fillOpacity: 0.3
+            }
+
+        }
+    ).addTo(map);
+
+    map.fitBounds(
+        provLayer.getBounds()
+    );
+
+});
+
 <h3>Profil Wilayah</h3>
 
 <table>
@@ -58,11 +90,11 @@ document.getElementById("profil")
 
 });
 
-const map =
-L.map('map');
+const map = L.map('map');
 
 L.tileLayer(
-'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+maxZoom:18
+}
 ).addTo(map);
-
-map.setView([-7.5,112.5],7);
