@@ -6,7 +6,7 @@ const slug = provinsi
     .toLowerCase()
     .replaceAll(" ", "-");
 
-// Inisialisasi peta lebih dulu
+// Buat peta
 const map = L.map('map');
 
 L.tileLayer(
@@ -21,9 +21,11 @@ fetch(`data/provinsi/${slug}.json`)
 .then(response => response.json())
 .then(data => {
 
+    // Judul
     document.getElementById("judul").innerHTML =
         data.provinsi;
 
+    // Profil
     document.getElementById("profil").innerHTML = `
         <h3>Profil Wilayah</h3>
 
@@ -54,7 +56,7 @@ fetch(`data/provinsi/${slug}.json`)
         </table>
     `;
 
-    // Ambil polygon provinsi dari geojson nasional
+    // Ambil polygon provinsi
     fetch('data/provinsi.geojson')
     .then(response => response.json())
     .then(geojson => {
@@ -82,9 +84,18 @@ fetch(`data/provinsi/${slug}.json`)
         ).addTo(map);
 
         if (provLayer.getLayers().length > 0) {
+
             map.fitBounds(
                 provLayer.getBounds()
             );
+
+        } else {
+
+            console.log(
+                "Provinsi tidak ditemukan:",
+                data.provinsi
+            );
+
         }
 
     });
