@@ -99,26 +99,31 @@ fetch('data/status.json')
                     "Belum ada data";
 
                 layer.bindPopup(`
-<b>${nama}</b>
+<div style="text-align:center;">
+    <h4>${provinsi}</h4>
 
-<br>
+    <p>
+        Status:
+        <b>${status}</b>
+    </p>
 
-Status:
-${status}
-
-<br><br>
-
-<button
-onclick="
-window.open(
-'detail.html?prov=${encodeURIComponent(nama)}',
-'_blank'
-)
-">
-
-Detail Provinsi
-
-</button>
+    <button
+        onclick="window.open(
+            'detail.html?prov=${encodeURIComponent(provinsi)}',
+            '_blank'
+        )"
+        style="
+            padding:8px 12px;
+            background:#0078ff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        "
+    >
+        Detail Provinsi
+    </button>
+</div>
 `);
 
                 layer.bindTooltip(
