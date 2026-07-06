@@ -1,114 +1,170 @@
-const params = new URLSearchParams(window.location.search);
-
-const provinsi = params.get("prov");
-
-const slug = provinsi
-    .toLowerCase()
-    .replaceAll(" ", "-");
-
-// Buat peta
-const map = L.map('map');
-
-L.tileLayer(
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-        maxZoom: 18
-    }
-).addTo(map);
-
-// Ambil data provinsi
-fetch(`data/provinsi/${slug}.json`)
+fetch(`data/pola_ruang/${slug}.json`)
 .then(response => response.json())
 .then(data => {
 
-    // Judul
-    document.getElementById("judul").innerHTML =
-        data.provinsi;
+    // Urutkan berdasarkan luas terbesar
+    data.sort((a,b) => b.luas - a.luas);
 
-    // Profil
-    document.getElementById("profil").innerHTML = `
-        <div class="profile-title">
-Profil Wilayah
-</div>
+    // Total luas
+    const total = data.reduce(
+        (sum,row) => sum + row.luas,
+        0
+    );
 
-<table>
+    // Bagi menjadi 2 kolom seimbang
+    const midpoint =
+        Math.ceil(data.length / 2);
 
-<tr>
-<td>Status</td>
-<td>:</td>
-<td>${data.status}</td>
-</tr>
+    const col1 =
+        data.slice(0, midpoint);
 
-<tr>
-<td>Luas Laut</td>
-<td>:</td>
-<td>${data.luas_laut}</td>
-</tr>
+    const col2 =
+        data.slice(midpoint);
 
-<tr>
-<td>Kabupaten Pesisir</td>
-<td>:</td>
-<td>${data.kabupaten_pesisir}</td>
-</tr>
+    let html = `
+        <div class="spatial-table-wrapper">
 
-<tr>
-<td>Jumlah Pulau</td>
-<td>:</td>
-<td>${data.pulau}</td>
-</tr>
+            <div class="spatial-column">
 
-</table>
+                <table>
 
-<div class="profile-description">
+                    <tr>
+                        <th>No</th>
+                        <th>Pola Ruang</th>
+                        <th>Luas (Ha)</th>
+                        <th>%</th>
+                    </tr>
+    `;
 
-Jawa Timur merupakan salah satu provinsi strategis di Indonesia yang memiliki wilayah pesisir dan laut yang luas, dengan potensi perikanan, pelabuhan, konservasi, dan pariwisata bahari yang menjadi pilar utama pembangunan wilayah pesisir.
+    // Kolom kiri
+    col1.forEach((row,index)=>{
 
-</div>
-
+        html += `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${row.nama}</td>
+                <td>${row.luas.toLocaleString('id-ID')}</td>
+                <td>${(row.luas / total * 100).toFixed(2)}%</td>
+            </tr>
         `;
 
-    // Ambil polygon provinsi
-    fetch('data/provinsi.geojson')
-    .then(response => response.json())
-    .then(geojson => {
+    });
 
-        const provLayer = L.geoJSON(
-            geojson,
-            {
-                filter: function(feature){
+    html += `
+                </table>
 
-                    return (
-                        feature.properties.WADMPR &&
-                        feature.properties.WADMPR.toUpperCase() ===
-                        data.provinsi.toUpperCase()
-                    );
+            </div>
 
-                },
+            <div class="spatial-column">
 
-                style: {
-                    color: '#00B894',
-                    weight: 3,
-                    fillColor: '#00B894',
-                    fillOpacity: 0.3
-                }
-            }
-        ).addTo(map);
+                <table>
 
-        if (provLayer.getLayers().length > 0) {
+                    <tr>
+                        <th>No</th>
+                        <th>Pola Ruang</th>
+                        <th>Luas (Ha)</th>
+                        <th>%</th>
+                    </tr>
+    `;
 
-            map.fitBounds(
-                provLayer.getBounds()
-            );
+    // Kolom kanan
+    col2.forEach((row,index)=>{
 
-        } else {
-
-            console.log(
-                "Provinsi tidak ditemukan:",
-                data.provinsi
-            );
-
-        }
+        html += `
+            <tr>
+                <td>${index + midpoint + 1}</td>
+                <td>${row.nama}</td>
+                <td>${row.luas.toLocaleString('id-ID')}</td>
+                <td>${(row.luas / total * 100).toFixed(2)}%</td>
+            </tr>
+        `;
 
     });
+
+    html += `
+                </table>
+
+            </div>
+
+        </div>
+
+        <div style="
+            margin-top:15px;
+            font-weight:bold;
+            font-size:14px;
+            color:#ddd;
+        ">
+            Total Luas Pola Ruang :
+            ${total.toLocaleString('id-ID')} Ha
+        </div>
+    `;
+
+    document.getElementById(
+        "spatialTable"
+    ).innerHTML = html;
+
+    // TOP 10 POLA RUANG TERLUAS
+
+    const top10 =
+        data.slice(0,10);
+
+    new Chart(
+        document.getElementById('barChart'),
+        {
+            type:'bar',
+
+            data:{
+                labels:
+                    top10.map(d => d.nama),
+
+                datasets:[
+                    {
+                        label:'Luas (Ha)',
+                        data:
+                            top10.map(d => d.luas)
+                    }
+                ]
+            },
+
+            options:{
+
+                indexAxis:'y',
+
+                responsive:true,
+
+                maintainAspectRatio:false,
+
+                plugins:{
+                    legend:{
+                        display:false
+                    }
+                },
+
+                scales:{
+
+                    x:{
+                        ticks:{
+                            color:'#ffffff'
+                        },
+                        grid:{
+                            color:'#444'
+                        }
+                    },
+
+                    y:{
+                        ticks:{
+                            color:'#ffffff'
+                        },
+                        grid:{
+                            color:'#444'
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+    );
 
 });
