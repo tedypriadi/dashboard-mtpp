@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
 
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Detail Provinsi</title>
 
@@ -13,30 +14,29 @@ href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
 
 body{
-font-family:Arial,sans-serif;
-margin:20px;
-background:#1f2128;
-color:white;
+    font-family:Arial,sans-serif;
+    margin:20px;
+    background:#1f2128;
+    color:white;
+}
+
+#judul{
+    font-size:56px;
+    font-weight:700;
+    margin-bottom:20px;
 }
 
 .card{
-background:#2b2d35;
-padding:15px;
-margin-bottom:20px;
-border-radius:10px;
-}
-
-#map{
-height:700px;
-border-radius:10px;
-border:1px solid #3a3f4b;
-box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    background:#2b2d35;
+    padding:20px;
+    border-radius:10px;
 }
 
 .top-container{
     display:flex;
     gap:30px;
     align-items:flex-start;
+    margin-bottom:40px;
 }
 
 .map-panel{
@@ -50,12 +50,8 @@ box-shadow:0 4px 15px rgba(0,0,0,0.3);
 #map{
     height:700px;
     border-radius:10px;
-}
-
-#judul{
-    font-size:56px;
-font-weight:700;
-    margin-bottom:20px;
+    border:1px solid #3a3f4b;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
 }
 
 .profile-panel table{
@@ -65,25 +61,26 @@ font-weight:700;
 }
 
 .profile-panel td{
-    padding:6px;
+    padding:8px 0;
+    vertical-align:top;
 }
 
 .profile-title{
     font-size:34px;
     margin-bottom:20px;
+    font-weight:bold;
 }
 
 .profile-description{
-    margin-top:40px;
+    margin-top:30px;
     line-height:1.8;
     font-size:22px;
     text-align:justify;
 }
 
 .section-title{
-    margin-top:40px;
-    margin-bottom:20px;
     font-size:32px;
+    margin-bottom:20px;
 }
 
 .spatial-container{
@@ -106,6 +103,12 @@ font-weight:700;
     border-radius:10px;
 }
 
+.spatial-table-card h3,
+.spatial-chart-card h3{
+    margin-top:0;
+    margin-bottom:15px;
+}
+
 .spatial-table-wrapper{
     display:flex;
     gap:20px;
@@ -123,12 +126,13 @@ font-weight:700;
 
 .spatial-column th{
     text-align:left;
+    padding:8px;
     border-bottom:1px solid #444;
-    padding:6px;
 }
 
 .spatial-column td{
-    padding:4px 6px;
+    padding:6px 8px;
+    border-bottom:1px solid #333;
 }
 
 .spatial-column tr:hover{
@@ -138,7 +142,29 @@ font-weight:700;
 #barChart{
     height:650px !important;
 }
-    
+
+@media (max-width:1200px){
+
+    .top-container{
+        flex-direction:column;
+    }
+
+    .map-panel,
+    .profile-panel{
+        width:100%;
+    }
+
+    .spatial-container{
+        flex-direction:column;
+    }
+
+    .spatial-table-card,
+    .spatial-chart-card{
+        width:100%;
+    }
+
+}
+
 </style>
 
 </head>
@@ -146,6 +172,8 @@ font-weight:700;
 <body>
 
 <h1 id="judul"></h1>
+
+<!-- PETA + PROFIL -->
 
 <div class="top-container">
 
@@ -159,9 +187,39 @@ font-weight:700;
 
 </div>
 
+<!-- STATISTIK POLA RUANG -->
+
+<div class="section-title">
+    Statistik Pola Ruang
+</div>
+
+<div class="spatial-container">
+
+    <div class="spatial-table-card">
+
+        <h3>
+            Komposisi Seluruh Pola Ruang
+        </h3>
+
+        <div id="spatialTable"></div>
+
+    </div>
+
+    <div class="spatial-chart-card">
+
+        <h3>
+            10 Pola Ruang Terluas
+        </h3>
+
+        <canvas id="barChart"></canvas>
+
+    </div>
+
+</div>
+
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="js/detail.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/detail.js"></script>
 
 </body>
 
