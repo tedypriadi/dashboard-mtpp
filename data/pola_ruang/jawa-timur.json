@@ -1,0 +1,66 @@
+[
+  {
+    "nama": "Zona Perikanan Tangkap",
+    "luas": 4559738.70
+  },
+  {
+    "nama": "Zona Perikanan Budidaya",
+    "luas": 308979.06
+  },
+  {
+    "nama": "Pencadangan/Indikasi Kawasan Konservasi",
+    "luas": 202819.22
+  },
+  {
+    "nama": "Zona Pertambangan Minyak dan Gas Bumi",
+    "luas": 49062.88
+  },
+  {
+    "nama": "Zona Pelabuhan Laut",
+    "luas": 43924.42
+  },
+  {
+    "nama": "Zona Pertambangan Mineral dan Batu Bara",
+    "luas": 18299.32
+  },
+  {
+    "nama": "Kawasan Konservasi Lainnya",
+    "luas": 16719.46
+  },
+  {
+    "nama": "Zona Industri",
+    "luas": 10311.44
+  },
+  {
+    "nama": "Zona Pengelolaan Ekosistem Pesisir",
+    "luas": 10059.12
+  },
+  {
+    "nama": "Zona Pelabuhan Perikanan",
+    "luas": 6682.93
+  },
+  {
+    "nama": "Zona Pariwisata",
+    "luas": 6139.57
+  },
+  {
+    "nama": "Zona Dumping Area",
+    "luas": 4324.57
+  },
+  {
+    "nama": "Zona Bandar Udara",
+    "luas": 2646.96
+  },
+  {
+    "nama": "Zona Pengelolaan Energi",
+    "luas": 614.77
+  },
+  {
+    "nama": "Taman",
+    "luas": 468.99
+  },
+  {
+    "nama": "Zona Fasilitas Umum",
+    "luas": 20.95
+  }
+]
