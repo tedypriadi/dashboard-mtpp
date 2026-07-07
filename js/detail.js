@@ -1,6 +1,4 @@
-const params = new URLSearchParams(
-    window.location.search
-);
+const params = new URLSearchParams(window.location.search);
 
 const provinsi = params.get("prov");
 
@@ -12,12 +10,12 @@ const slug = provinsi
 // PETA
 // =====================
 
-const map = L.map('map');
+const map = L.map("map");
 
 L.tileLayer(
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     {
-        maxZoom:18
+        maxZoom: 18
     }
 ).addTo(map);
 
@@ -44,31 +42,33 @@ fetch(`data/provinsi/${slug}.json`)
                     <td><b>Provinsi</b></td>
                     <td>${data.provinsi}</td>
                 </tr>
+
                 <tr>
                     <td><b>Status</b></td>
-                    <td>${data.status || '-'}</td>
+                    <td>${data.status || "-"}</td>
                 </tr>
+
                 <tr>
                     <td><b>Perda</b></td>
-                    <td>${data.perda || '-'}</td>
+                    <td>${data.perda || "-"}</td>
                 </tr>
             </table>
 
             <div class="profile-description">
-                ${data.deskripsi || ''}
+                ${data.deskripsi || ""}
             </div>
 
         </div>
     `;
 
-    fetch('data/provinsi.geojson')
+    fetch("data/provinsi.geojson")
     .then(response => response.json())
     .then(geojson => {
 
         const provLayer = L.geoJSON(
             geojson,
             {
-                filter:function(feature){
+                filter: function(feature){
 
                     return (
                         feature.properties.WADMPR &&
@@ -79,10 +79,10 @@ fetch(`data/provinsi/${slug}.json`)
                 },
 
                 style:{
-                    color:'#00B894',
+                    color:"#00B894",
                     weight:3,
-                    fillColor:'#00B894',
-                    fillOpacity:0.3
+                    fillColor:"#00B894",
+                    fillOpacity:0.30
                 }
             }
         ).addTo(map);
@@ -138,14 +138,14 @@ fetch(`data/pola_ruang/${slug}.json`)
                     </tr>
     `;
 
-    col1.forEach((row,index)=>{
+    col1.forEach((row,index) => {
 
         html += `
             <tr>
-                <td>${index+1}</td>
+                <td>${index + 1}</td>
                 <td>${row.nama}</td>
                 <td>${row.luas.toLocaleString('id-ID')}</td>
-                <td>${(row.luas/total*100).toFixed(2)}%</td>
+                <td>${(row.luas / total * 100).toFixed(2)}%</td>
             </tr>
         `;
 
@@ -153,6 +153,7 @@ fetch(`data/pola_ruang/${slug}.json`)
 
     html += `
                 </table>
+
             </div>
 
             <div class="spatial-column">
@@ -167,14 +168,14 @@ fetch(`data/pola_ruang/${slug}.json`)
                     </tr>
     `;
 
-    col2.forEach((row,index)=>{
+    col2.forEach((row,index) => {
 
         html += `
             <tr>
                 <td>${index + midpoint + 1}</td>
                 <td>${row.nama}</td>
                 <td>${row.luas.toLocaleString('id-ID')}</td>
-                <td>${(row.luas/total*100).toFixed(2)}%</td>
+                <td>${(row.luas / total * 100).toFixed(2)}%</td>
             </tr>
         `;
 
@@ -182,11 +183,16 @@ fetch(`data/pola_ruang/${slug}.json`)
 
     html += `
                 </table>
+
             </div>
 
         </div>
 
-        <div style="margin-top:15px;font-weight:bold;">
+        <div style="
+            margin-top:15px;
+            font-weight:bold;
+            font-size:16px;
+        ">
             Total Luas Pola Ruang :
             ${total.toLocaleString('id-ID')} Ha
         </div>
@@ -196,83 +202,99 @@ fetch(`data/pola_ruang/${slug}.json`)
         "spatialTable"
     ).innerHTML = html;
 
+    // =====================
+    // TOP 10 POLA RUANG
+    // =====================
+
     const top10 =
         data.slice(0,10);
 
     new Chart(
-        document.getElementById('barChart'),
+        document.getElementById("barChart"),
         {
-            type:'bar',
+            type:"bar",
 
             data:{
+
                 labels:
                     top10.map(d => d.nama),
 
                 datasets:[
-    {
-        label:'Luas (Ha)',
+                    {
+                        label:"Luas (Ha)",
 
-        data:
-            top10.map(d => d.luas),
+                        data:
+                            top10.map(d => d.luas),
 
-        backgroundColor:[
-            '#3B82F6', // biru
-            '#22C55E', // hijau
-            '#FACC15', // kuning
-            '#A855F7', // ungu
-            '#EF4444', // merah
-            '#F97316', // oranye
-            '#06B6D4', // cyan
-            '#EC4899', // pink
-            '#84CC16', // lime
-            '#A1A1AA'  // abu
-        ],
+                        backgroundColor:[
+                            "#3B82F6",
+                            "#22C55E",
+                            "#FACC15",
+                            "#A855F7",
+                            "#EF4444",
+                            "#F97316",
+                            "#06B6D4",
+                            "#EC4899",
+                            "#84CC16",
+                            "#A1A1AA"
+                        ],
 
-        borderWidth:0,
-
-        borderRadius:4
-    }
-]
+                        borderWidth:0,
+                        borderRadius:4
+                    }
+                ]
             },
 
             options:{
-    indexAxis:'y',
-    responsive:true,
-    maintainAspectRatio:false,
 
-    plugins:{
-        legend:{
-            display:false
-        }
-    },
+                indexAxis:"y",
 
-    scales:{
+                responsive:true,
 
-        x:{
-            ticks:{
-                color:'#FFFFFF'
-            },
-            grid:{
-                color:'rgba(255,255,255,0.08)'
-            }
-        },
+                maintainAspectRatio:false,
 
-        y:{
-            ticks:{
-                color:'#FFFFFF',
-                font:{
-                    size:13
+                plugins:{
+                    legend:{
+                        display:false
+                    }
+                },
+
+                scales:{
+
+                    x:{
+                        ticks:{
+                            color:"#FFFFFF"
+                        },
+                        grid:{
+                            color:"rgba(255,255,255,0.08)"
+                        }
+                    },
+
+                    y:{
+                        ticks:{
+                            color:"#FFFFFF",
+                            font:{
+                                size:13
+                            }
+                        },
+                        grid:{
+                            display:false
+                        }
+                    }
+
                 }
-            },
-            grid:{
-                display:false
+
             }
-        }
 
-    }
-
-}
         }
+    );
+
+})
+.catch(error => {
+
+    console.error(
+        "Gagal memuat data pola ruang:",
+        error
     );
 
 });
