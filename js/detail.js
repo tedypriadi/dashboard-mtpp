@@ -209,12 +209,30 @@ fetch(`data/pola_ruang/${slug}.json`)
                     top10.map(d => d.nama),
 
                 datasets:[
-                    {
-                        label:'Luas (Ha)',
-                        data:
-                            top10.map(d => d.luas)
-                    }
-                ]
+    {
+        label:'Luas (Ha)',
+
+        data:
+            top10.map(d => d.luas),
+
+        backgroundColor:[
+            '#3B82F6', // biru
+            '#22C55E', // hijau
+            '#FACC15', // kuning
+            '#A855F7', // ungu
+            '#EF4444', // merah
+            '#F97316', // oranye
+            '#06B6D4', // cyan
+            '#EC4899', // pink
+            '#84CC16', // lime
+            '#A1A1AA'  // abu
+        ],
+
+        borderWidth:0,
+
+        borderRadius:4
+    }
+]
             },
 
             options:{
@@ -223,29 +241,35 @@ fetch(`data/pola_ruang/${slug}.json`)
     maintainAspectRatio:false,
 
     plugins:{
-        legend:{
-            display:false
+    legend:{
+        display:false
+    }
+},
+
+scales:{
+
+    x:{
+        ticks:{
+            color:'#FFFFFF'
+        },
+        grid:{
+            color:'rgba(255,255,255,0.08)'
         }
     },
 
-    scales:{
-        x:{
-            ticks:{
-                color:'#ffffff'
-            },
-            grid:{
-                color:'#444'
+    y:{
+        ticks:{
+            color:'#FFFFFF',
+            font:{
+                size:13
             }
         },
-
-        y:{
-            ticks:{
-                color:'#ffffff',
-                font:{
-                    size:13
-                }
-            }
+        grid:{
+            display:false
         }
+    }
+
+}
     }
 }
         }
