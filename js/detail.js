@@ -13,9 +13,11 @@ const slug = provinsi
 const map = L.map("map");
 
 L.tileLayer(
-    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
     {
-        maxZoom: 18
+        attribution:
+            '&copy; Esri, Maxar, Earthstar Geographics',
+        maxZoom: 19
     }
 ).addTo(map);
 
