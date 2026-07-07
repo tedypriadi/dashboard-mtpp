@@ -83,21 +83,16 @@ body{
     margin-bottom:20px;
 }
 
-.spatial-container{
-    display:flex;
-    gap:20px;
-    align-items:flex-start;
-}
-
 .spatial-table-card{
-    width:65%;
+    width:100%;
     background:#2b2d35;
     padding:20px;
     border-radius:10px;
+    margin-bottom:25px;
 }
 
 .spatial-chart-card{
-    width:35%;
+    width:100%;
     background:#2b2d35;
     padding:20px;
     border-radius:10px;
@@ -106,12 +101,13 @@ body{
 .spatial-table-card h3,
 .spatial-chart-card h3{
     margin-top:0;
-    margin-bottom:15px;
+    margin-bottom:20px;
+    font-size:24px;
 }
 
 .spatial-table-wrapper{
     display:flex;
-    gap:20px;
+    gap:30px;
 }
 
 .spatial-column{
@@ -121,17 +117,17 @@ body{
 .spatial-column table{
     width:100%;
     border-collapse:collapse;
-    font-size:13px;
+    font-size:15px;
 }
 
 .spatial-column th{
     text-align:left;
-    padding:8px;
-    border-bottom:1px solid #444;
+    padding:10px;
+    border-bottom:2px solid #444;
 }
 
 .spatial-column td{
-    padding:6px 8px;
+    padding:8px 10px;
     border-bottom:1px solid #333;
 }
 
@@ -140,7 +136,7 @@ body{
 }
 
 #barChart{
-    height:650px !important;
+    height:500px !important;
 }
 
 @media (max-width:1200px){
@@ -154,12 +150,15 @@ body{
         width:100%;
     }
 
-    .spatial-container{
+}
+
+@media (max-width:900px){
+
+    .spatial-table-wrapper{
         flex-direction:column;
     }
 
-    .spatial-table-card,
-    .spatial-chart-card{
+    .spatial-column{
         width:100%;
     }
 
@@ -193,27 +192,23 @@ body{
     Statistik Pola Ruang
 </div>
 
-<div class="spatial-container">
+<div class="spatial-table-card">
 
-    <div class="spatial-table-card">
+    <h3>
+        Detail Luas Pola Ruang Laut
+    </h3>
 
-        <h3>
-            Komposisi Seluruh Pola Ruang
-        </h3>
+    <div id="spatialTable"></div>
 
-        <div id="spatialTable"></div>
+</div>
 
-    </div>
+<div class="spatial-chart-card">
 
-    <div class="spatial-chart-card">
+    <h3>
+        10 Pola Ruang Terluas
+    </h3>
 
-        <h3>
-            10 Pola Ruang Terluas
-        </h3>
-
-        <canvas id="barChart"></canvas>
-
-    </div>
+    <canvas id="barChart"></canvas>
 
 </div>
 
