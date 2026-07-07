@@ -218,16 +218,36 @@ fetch(`data/pola_ruang/${slug}.json`)
             },
 
             options:{
-                indexAxis:'y',
-                responsive:true,
-                maintainAspectRatio:false,
+    indexAxis:'y',
+    responsive:true,
+    maintainAspectRatio:false,
 
-                plugins:{
-                    legend:{
-                        display:false
-                    }
+    plugins:{
+        legend:{
+            display:false
+        }
+    },
+
+    scales:{
+        x:{
+            ticks:{
+                color:'#ffffff'
+            },
+            grid:{
+                color:'#444'
+            }
+        },
+
+        y:{
+            ticks:{
+                color:'#ffffff',
+                font:{
+                    size:13
                 }
             }
+        }
+    }
+}
         }
     );
 
