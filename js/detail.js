@@ -241,36 +241,36 @@ fetch(`data/pola_ruang/${slug}.json`)
     maintainAspectRatio:false,
 
     plugins:{
-    legend:{
-        display:false
-    }
-},
-
-scales:{
-
-    x:{
-        ticks:{
-            color:'#FFFFFF'
-        },
-        grid:{
-            color:'rgba(255,255,255,0.08)'
+        legend:{
+            display:false
         }
     },
 
-    y:{
-        ticks:{
-            color:'#FFFFFF',
-            font:{
-                size:13
+    scales:{
+
+        x:{
+            ticks:{
+                color:'#FFFFFF'
+            },
+            grid:{
+                color:'rgba(255,255,255,0.08)'
             }
         },
-        grid:{
-            display:false
+
+        y:{
+            ticks:{
+                color:'#FFFFFF',
+                font:{
+                    size:13
+                }
+            },
+            grid:{
+                display:false
+            }
         }
+
     }
 
-}
-    }
 }
         }
     );
